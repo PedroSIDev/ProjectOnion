@@ -1,6 +1,7 @@
 # 📊 Sistema de Gerenciamento de Projetos e Tarefas
 
 ## 📑 Sumário
+
 - [Descrição](#descrição)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Arquitetura do Backend](#arquitetura-do-backend)
@@ -21,6 +22,7 @@
 Sistema fullstack para gerenciamento de projetos e tarefas, com autenticação via **JWT** e controle de acesso baseado em papéis (**admin** e **colaborador**).
 
 Principais funcionalidades:
+
 - Login seguro via `client_id` e `client_secret`.
 - Geração e validação de **token JWT**.
 - CRUD completo de projetos e tarefas.
@@ -31,6 +33,7 @@ Principais funcionalidades:
 ## 💻 Tecnologias Utilizadas
 
 ### Backend
+
 - **Node.js**
 - **Express.js**
 - **SQLite** (via `sql.js`)
@@ -38,7 +41,8 @@ Principais funcionalidades:
 - Arquitetura **em camadas** (Arquitetura **Cebola**)
 
 ### Frontend
-- (Escolha entre) **React**, **Vue** ou **Angular**
+
+- (Escolher o melhor para o projeto)
 
 ---
 
@@ -47,6 +51,7 @@ Principais funcionalidades:
 O backend segue o modelo de **Arquitetura em Cebola**, composta por quatro camadas bem definidas.
 
 ### 🥇 1. Domain (Núcleo)
+
 - Define as **entidades**: `User`, `Project`, `Task`
 - Define os **contratos**: interfaces de repositórios e serviços
 - **Sem** dependências externas
@@ -54,7 +59,8 @@ O backend segue o modelo de **Arquitetura em Cebola**, composta por quatro camad
 ---
 
 ### 🥈 2. Application
-- Define os **casos de uso**: 
+
+- Define os **casos de uso**:
   - Criar projetos
   - Listar tarefas
   - Autenticar usuário
@@ -64,6 +70,7 @@ O backend segue o modelo de **Arquitetura em Cebola**, composta por quatro camad
 ---
 
 ### 🥉 3. Infrastructure
+
 - Implementações de:
   - Acesso a **SQLite** via `sql.js`
   - **Serviços JWT**
@@ -73,6 +80,7 @@ O backend segue o modelo de **Arquitetura em Cebola**, composta por quatro camad
 ---
 
 ### 🏅 4. Presentation
+
 - Interface HTTP via **Express.js**
 - Define as **rotas** e **controladores**
 - Responsável por orquestrar as requisições e casos de uso
@@ -90,8 +98,9 @@ Task
 Campos: id, title, description, project_id, assigned_to (user_id), status
 
 ✅ Requisitos Funcionais
+
 1. Autenticação e Autorização
-Endpoint de login via client_id e client_secret
+   Endpoint de login via client_id e client_secret
 
 Geração de token JWT
 
@@ -104,21 +113,21 @@ Admin: CRUD completo
 Colaborador: apenas leitura dos seus próprios projetos/tarefas
 
 2. Entidades Obrigatórias
-User
+   User
 
 Project
 
 Task
 
 3. Backend
-Desenvolvido em Node.js + Express
+   Desenvolvido em Node.js + Express
 
 Banco de dados via SQL.js
 
 Arquitetura em Cebola
 
 4. Frontend
-Framework livre: React, Vue ou Angular
+   Framework livre: React, Vue ou Angular
 
 Funcionalidades:
 
@@ -131,13 +140,13 @@ Criação de Projetos e Tarefas (se autorizado)
 Visualização de tarefas atribuídas ao usuário autenticado
 
 🏆 Critérios de Avaliação
-Critério	Pontuação
-Estrutura em cebola	5 pts
-Entidades e telas	5 pts
-Coerência entre estrutura e o projeto	5 pts
-Criatividade e usabilidade do projeto	5 pts
-Organização e qualidade da apresentação	5 pts
-Total	25 pts
+Critério Pontuação
+Estrutura em cebola 5 pts
+Entidades e telas 5 pts
+Coerência entre estrutura e o projeto 5 pts
+Criatividade e usabilidade do projeto 5 pts
+Organização e qualidade da apresentação 5 pts
+Total 25 pts
 
 🗃️ Dados de Inicialização
 O projeto deverá conter um script de seed para popular o banco de dados com:
