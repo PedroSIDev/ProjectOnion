@@ -1,10 +1,9 @@
 class Project {
-  constructor(id, name, description, createdAt, updatedAt) {
+  constructor(id, name, description, owner) {
     this.id = id;
     this.name = name;
     this.description = description;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
+    this.owner = owner;
   }
 }
 module.exports = Project;
