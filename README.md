@@ -42,7 +42,7 @@ Principais funcionalidades:
 
 ### Frontend
 
-- (Escolher o melhor para o projeto)
+- **Next.js**
 
 ---
 
