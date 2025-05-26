@@ -1,8 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(':memory:');
+const db = new sqlite3.Database('./database.sqlite');
 
 db.serialize(() => {
-    db.run(`CREATE TABLE users (
+    db.run(`CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         email TEXT UNIQUE,
@@ -10,7 +10,7 @@ db.serialize(() => {
         role TEXT
     )`);
 
-    db.run(`CREATE TABLE projects (
+    db.run(`CREATE TABLE IF NOT EXISTS projects (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         description TEXT,
@@ -18,7 +18,7 @@ db.serialize(() => {
         FOREIGN KEY(owner) REFERENCES users(id)
     )`);
 
-    db.run(`CREATE TABLE tasks (
+    db.run(`CREATE TABLE IF NOT EXISTS tasks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT,
         description TEXT,
@@ -28,14 +28,6 @@ db.serialize(() => {
         FOREIGN KEY(project_id) REFERENCES projects(id),
         FOREIGN KEY(assigned_to) REFERENCES users(id)
     )`);
-
-    // Usuário admin
-    db.run(`INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)`,
-        ['Admin', 'admin@example.com', 'admin123', 'admin']);
-
-    // Usuário colaborador
-    db.run(`INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)`,
-        ['Colaborador', 'colab@example.com', 'colab123', 'colaborador']);
 });
 
 module.exports = db;
