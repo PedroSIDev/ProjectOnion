@@ -9,17 +9,26 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { ChevronLeft } from "lucide-react";
 
 export default function AuthPage() {
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-gray-900">
+        <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
             <Card className="w-full max-w-sm">
                 <CardHeader>
-                    <CardTitle>Painel de Login</CardTitle>
-                    <CardDescription>
-                        Faça login para acessar o sistema!
-                    </CardDescription>
-
+                    <div className="flex items-center gap-3">
+                        <Button asChild size="icon" className="bg-zinc-950">
+                            <a href="/">
+                                <ChevronLeft />
+                            </a>
+                        </Button>
+                        <div>
+                            <CardTitle>Painel de Login</CardTitle>
+                            <CardDescription>
+                                Faça login para acessar o sistema!
+                            </CardDescription>
+                        </div>
+                    </div>
                 </CardHeader>
                 <CardContent>
                     <form>
@@ -29,18 +38,18 @@ export default function AuthPage() {
                                 <Input
                                     id="email"
                                     type="email"
-                                    placeholder="m@example.com"
+                                    placeholder="email@gmail.com"
                                     required
                                 />
                             </div>
                             <div className="grid gap-2">
                                 <div className="flex items-center">
-                                    <Label htmlFor="password">Password</Label>
+                                    <Label htmlFor="password">Senha</Label>
                                     <a
                                         href="#"
                                         className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                                     >
-                                        Forgot your password?
+                                        Esqueceu sua senha?
                                     </a>
                                 </div>
                                 <Input
