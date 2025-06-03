@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   description: "BMW Maintenance System is a web application for managing vehicle maintenance tasks and records.",
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{

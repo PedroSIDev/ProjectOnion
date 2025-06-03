@@ -1,17 +1,47 @@
-import { Button } from "@/components/ui/button"
+'use client';
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { ChevronLeft } from "lucide-react";
 
 export default function AuthPage() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError("");
+        try {
+            const res = await fetch("http://localhost:3001/api/users/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+            if (!res.ok) {
+                const data = await res.json();
+                setError(data.error || "Erro ao autenticar");
+                return;
+            }
+            const data = await res.json();
+            localStorage.setItem("token", data.token);
+            router.push("/testeAuth");
+        } catch {
+            setError("Erro de conexão");
+        }
+    };
+
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
             <Card className="w-full max-w-sm">
@@ -31,7 +61,7 @@ export default function AuthPage() {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="flex flex-col gap-6">
                             <div className="grid gap-2">
                                 <Label htmlFor="email">Email</Label>
@@ -40,6 +70,8 @@ export default function AuthPage() {
                                     type="email"
                                     placeholder="email@gmail.com"
                                     required
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
                                 />
                             </div>
                             <div className="grid gap-2">
@@ -57,16 +89,22 @@ export default function AuthPage() {
                                     type="password"
                                     placeholder="********"
                                     required
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
                                 />
                             </div>
                         </div>
+                        {error && (
+                            <p className="text-red-500 text-sm mt-4">{error}</p>
+                        )}
+                        <Button
+                            type="submit"
+                            className="w-full mt-6 h-12 text-base font-semibold"
+                        >
+                            Login
+                        </Button>
                     </form>
                 </CardContent>
-                <CardFooter className="flex-col gap-2">
-                    <Button type="submit" className="w-full">
-                        Login
-                    </Button>
-                </CardFooter>
             </Card>
         </div>
     );

@@ -1,26 +1,12 @@
 class IUserRepository {
-  /**
-   * @param {Object} userData
-   * @returns {Promise<Object>}
-   */
-  async create(userData) {
-    throw new Error('Method not implemented');
-  }
-
-  /**
-   * @param {string} email
-   * @returns {Promise<Object|null>}
-   */
   async findByEmail(email) {
-    throw new Error('Method not implemented');
+    throw new Error('Not implemented');
   }
-
-  /**
-   * @param {string} id
-   * @returns {Promise<Object|null>}
-   */
+  async create(user) {
+    throw new Error('Not implemented');
+  }
   async findById(id) {
-    throw new Error('Method not implemented');
+    throw new Error('Not implemented');
   }
 }
 
