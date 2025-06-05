@@ -25,9 +25,9 @@ export default function AuthPage() {
         setError("");
         try {
             const res = await fetch("http://localhost:3001/api/users/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
             });
             if (!res.ok) {
                 const data = await res.json();
@@ -36,7 +36,7 @@ export default function AuthPage() {
             }
             const data = await res.json();
             localStorage.setItem("token", data.token);
-            router.push("/testeAuth");
+            router.push("/dashboard");
         } catch {
             setError("Erro de conexão");
         }

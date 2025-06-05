@@ -3,7 +3,7 @@ const SECRET = process.env.JWT_SECRET || 'supersecret';
 
 class JwtService {
   generateToken(payload) {
-    return jwt.sign(payload, SECRET, { expiresIn: '1s' });
+    return jwt.sign(payload, SECRET, { expiresIn: '15m' });
   }
 
   verifyToken(token) {

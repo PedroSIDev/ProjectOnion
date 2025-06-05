@@ -1,6 +1,6 @@
 'use client';
 
-export default function TesteAuthPage() {
+export default function dashboard() {
     return (
         <div style={{ maxWidth: 400, margin: 'auto', padding: 32 }}>
             <h2>Você está autenticado!</h2>
